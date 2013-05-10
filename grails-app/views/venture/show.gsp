@@ -106,6 +106,8 @@
 			<g:form>
 				<fieldset class="buttons">
 					<g:hiddenField name="id" value="${ventureInstance?.id}" />
+                                        <!--- need to allow ventures to be able to add filled roles & unfilled rules -->
+                                   //     <g:link controller="venture" action="createAvailableRoles" id="${ventureInstance?.id}">Add Available Role</g:link>
 					<g:link class="edit" action="edit" id="${ventureInstance?.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 				</fieldset>

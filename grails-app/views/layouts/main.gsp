@@ -89,7 +89,8 @@
                 <ul class="dropdown-menu">
                   <li class="nav-header">My Ventures</li>
 
-                  <li><a href="${createLink(controller: 'venture', action: 'generateVentureView', id: session.user.id)}">Show Mine</a></li>
+                  <li><a href="${createLink(controller: 'venture', action: 'list', id: session.user.id)}">Show Mine</a></li>
+                  <li><a href="${createLink(controller: 'venture', action: 'allventures')}">All Ventures</a></li>
                   <li><a href="#" id="createventure">Create</a></li>
 
                 </ul>

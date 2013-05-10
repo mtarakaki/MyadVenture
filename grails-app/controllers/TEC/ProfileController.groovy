@@ -72,8 +72,8 @@ class ProfileController {
         redirect(url: "/")
     }
     
-    def show() {
-        def id = session?.user?.id
+    def show(Long id) {
+        //def id = session?.user?.id
         def profileInstance = Profile.get(id)
         if (!profileInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'profile.label', default: 'Profile'), params.id])
@@ -254,6 +254,21 @@ class ProfileController {
         println "HELLO THERE"
         //def roleCount = roleList.size()
         
+        
+        //find all the roles that the user is in
+        //by looking through all the Ventures, finding filledRoles that have
+        //an ownerid that is equal to the current user's id.
+        def roleCriteria = Venture.createCriteria()
+        def roleList = roleCriteria.list{
+            filledRoles {
+                eq("owner.id",session?.user?.id)
+            }
+        }
+        
+        println "Roles: "
+        println roleList
+        def roleCount = roleList.size()
+        println roleCount
         
         def db = new Sql(dataSource)
         def connectionRequests = db.executeQuery("SELECT * FROM profile p JOIN connection_request c ON p.id=c.from_id WHERE c.to_id="+userInstance?.id)
