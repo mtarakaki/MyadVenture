@@ -363,7 +363,7 @@ $(document).ready(function() {
               <button type="button" class="btn btn-mini btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
               <ul class="dropdown-menu">
                 <li><a href="${createLink(controller: 'venture', action: 'list')}">View Ventures</a></li>
-                <li><a href="${createLink(controller: 'venture', action: 'create')}" class="createventure">Add Venture</a></li>
+                <li><a href="${createLink(controller: 'venture', action: 'create')}" class="createventure">Create Venture</a></li>
               </ul>
             </div>
             <br/><br/>
