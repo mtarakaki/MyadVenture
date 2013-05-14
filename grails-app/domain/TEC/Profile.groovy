@@ -14,6 +14,10 @@ class Profile {
         boolean hasAvatar=0
 	boolean suspended = 0
 
+        String toString(){
+            return (this.firstName + " " + this.lastName)
+        }
+    
 	static hasMany = [connections:Profile, blogs:Blog, skillsets:Skillset, specializations:Specialization, ventures:Venture]
 
 	static constraints = {

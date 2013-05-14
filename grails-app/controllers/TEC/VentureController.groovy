@@ -26,8 +26,9 @@ class VentureController {
                 property('logoUri')
                 property('dateOfIncorporation')
             }
-            eq("admin", profileInstance)
             order("name", "asc")
+            eq("admin", profileInstance)
+            //order("name", "asc")
         }
         
         def ventureCount = ventureList.size()		

@@ -9,7 +9,7 @@ class Venture {
     Date dateCreated
 
     static hasMany = [filledRoles:Role, availableRoles:Role, blogs:Blog]
-    
+
     static constraints = {
 	name (blank:false, nullable:false)
 	description (blank:false, nullable:false)
@@ -18,9 +18,8 @@ class Venture {
     }
 
     static mapping = {
-//	cofounders cascade: "all-delete-orphan"
-	filledRoles cascade: "all-delete-orphan"
-	availableRoles cascade: "all-delete-orphan"
+
+availableRoles cascade: "all-delete-orphan"
         blogs cascade: "all-delete-orphan"
     }
 }
