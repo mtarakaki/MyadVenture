@@ -270,10 +270,22 @@ class ProfileController {
         def roleCount = roleList.size()
         println roleCount
         
+        
+        def projectCriteria = Profile.createCriteria()
+        def projectList = projectCriteria.list{
+            projects {
+                eq("admin.id",session?.user?.id)
+            }
+        }
+        def projectCount = projectList.size()
+        println "Project Results: "
+        println projectList
+        println projectCount
+        
         def db = new Sql(dataSource)
         def connectionRequests = db.executeQuery("SELECT * FROM profile p JOIN connection_request c ON p.id=c.from_id WHERE c.to_id="+userInstance?.id)
         
-        render(view: "page", model: [connected: isConnected,ventures:ventureList,ventureCount:ventureCount,blogs: blogList, blogCount: blogCount, skills: skillList, skillCount: skillCount, specializations: specList, specCount: specCount, connectionRequests: connectionRequests, profileInstance: profileInstance])		
+        render(view: "page", model: [connected: isConnected, projects:projectList, projectCount: projectCount, ventures:ventureList, ventureCount:ventureCount,blogs: blogList, blogCount: blogCount, skills: skillList, skillCount: skillCount, specializations: specList, specCount: specCount, connectionRequests: connectionRequests, profileInstance: profileInstance])		
     }
 
     def edit() {

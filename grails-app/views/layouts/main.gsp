@@ -59,6 +59,13 @@
         return false;
       });
       
+      $(".createproject").click( function () {
+        $("#myModal .modal-header").html('<button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button><h3 id="myModalLabel">Create Project</h3>');
+        $("#myModal .modal-body").load($(this).attr('href'));
+        $('#myModal').modal('show');  
+        return false;
+      });
+      
       // Click signin shows modal
       $("#signin").die("click").live("click", function () {  
               $("#myModal .modal-header").html('<button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button><h3 id="myModalLabel">Sign in</h3>');
@@ -99,6 +106,18 @@
                   <li><a href="${createLink(controller: 'venture', action: 'list', id: session.user.id)}">Show Mine</a></li>
                   <li><a href="${createLink(controller: 'venture', action: 'allventures')}">All Ventures</a></li>
                   <li><a href="${createLink(controller: 'venture', action: 'create')}" class="createventure">Create Venture</a></li>
+                </ul>
+              </li>
+              
+              <li class="dropdown">
+
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Projects <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li class="nav-header">My Projects</li>
+
+                  <li><a href="${createLink(controller: 'project', action: 'list', id: session.user.id)}">Show Mine</a></li>
+                  <li><a href="${createLink(controller: 'project', action: 'allprojects')}">All Projects</a></li>
+                  <li><a href="${createLink(controller: 'project', action: 'create')}" class="createproject">Create Project</a></li>
                 </ul>
               </li>
 

@@ -317,37 +317,18 @@ $(document).ready(function() {
               </thead>
               <tbody>
               <g:each in="${ventures}">
-                <tr>
-                  <td>
-                    
-                  </td>
-                  <td>
-                  </td>
-                </tr>
+                <div class="media-body">
+                <a class="pull-left" href="#">
+                  <img class="media-object" src="http://localhost:8081/uploads/no-pic-avatar.jpg" width="64px" height="64px"/>
+                </a>
+                <div class="media"><small></small></div>
+                </div>
               </g:each>
               <tr><td></td></tr>
             </tbody>
             </table>
             </div>
           </g:if>
-          
-          
-          
-          
-          
-          <!-- For each venture -->
-          <g:if test="${ventures}">
-            <g:each in="${ventures}">
-              <div class="media-body">
-                <a class="pull-left" href="#">
-                  <img class="media-object" src="http://localhost:8081/uploads/no-pic-avatar.jpg" width="64px" height="64px"/>
-                </a>
-                <div class="media"><small></small></div>
-              </div>
-            </g:each>
-          </g:if>
-          
-          
           
           <g:else>
             <center><g:if test="${profileInstance?.id == session?.user?.id}">You aren't</g:if>
@@ -369,6 +350,55 @@ $(document).ready(function() {
             <br/><br/>
           </g:if>
         </div>
+        
+        <div class="well well-large">
+          <h4>Projects</h4>
+          <hr/>
+          <g:if test="${projects}">
+            <br/><div style="height:200px; overflow-y:scroll;">
+            <table class="table table-condensed" >
+              <thead>
+                <tr>&nbsp;</tr>
+                <tr>&nbsp;</tr>
+              </thead>
+              <tbody>
+              <g:each in="${projects}">
+                <div class="media-body">
+                <a class="pull-left" href="#">
+                  <img class="media-object" src="http://localhost:8081/uploads/no-pic-avatar.jpg" width="64px" height="64px"/>
+                </a>
+                <div class="media"><small></small></div>
+                </div>
+              </g:each>
+              <tr><td></td></tr>
+            </tbody>
+            </table>
+            </div>
+          </g:if>
+        
+          
+          
+          <g:else>
+            <center><g:if test="${profileInstance?.id == session?.user?.id}">You aren't</g:if>
+              <g:else>${profileInstance?.firstName} isn't</g:else> part of a project!
+            </center>
+          </g:else>
+          <!-- End for each venture -->
+
+          <br/>
+          <g:if test="${profileInstance?.id == session?.user?.id}">
+            <div class="btn-group pull-right">
+              <button type="button" class="btn btn-mini btn-primary ">Actions</button>
+              <button type="button" class="btn btn-mini btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+              <ul class="dropdown-menu">
+                <li><a href="${createLink(controller: 'project', action: 'list')}">View Project</a></li>
+                <li><a href="${createLink(controller: 'project', action: 'create')}" class="createproject">Create Project</a></li>
+              </ul>
+            </div>
+            <br/><br/>
+          </g:if>
+        </div>
+        
 
         <div class="well well-large">
           <h4>Connection Requests</h4>

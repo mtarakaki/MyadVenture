@@ -18,7 +18,7 @@ class Profile {
             return (this.firstName + " " + this.lastName)
         }
     
-	static hasMany = [connections:Profile, blogs:Blog, skillsets:Skillset, specializations:Specialization, ventures:Venture]
+	static hasMany = [connections:Profile, blogs:Blog, skillsets:Skillset, specializations:Specialization, ventures:Venture, projects:Project]
 
 	static constraints = {
                 personalWebpage(nullable:true,url:true)
