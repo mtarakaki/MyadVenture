@@ -1,4 +1,4 @@
-<%@ page import="TEC.Project" %>
+<%@ page import="TEC.Venture" %>
 
 
 
@@ -18,6 +18,22 @@
 	<g:textField name="description" required="" value="${projectInstance?.description}"/>
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: projectInstance, field: 'ratings', 'error')} required">
+	<label for="description">
+		<g:message code="project.description.label" default="Ratings" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:textField name="ratings" required="" value="${projectInstance?.ratings}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: projectInstance, field: 'funding', 'error')} required">
+	<label for="funding">
+		<g:message code="project.description.label" default="Funding" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:textField name="funding" required="" value="${projectInstance?.funding}"/>
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: projectInstance, field: 'admin', 'error')} required">
 	<label for="admin">
 		<g:message code="project.admin.label" default="Admin" />
@@ -32,39 +48,31 @@
 		
 	</label>
 	
-<ul class="one-to-many">
-<g:each in="${projectInstance?.availableRoles?}" var="a">
-    <li><g:link controller="role" action="show" id="${a.id}">${a?.encodeAsHTML()}</g:link></li>
-</g:each>
-<li class="add">
-<g:link controller="role" action="create" params="['project.id': projectInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'role.label', default: 'Role')])}</g:link>
-</li>
-</ul>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: projectInstance, field: 'blogs', 'error')} ">
-	<label for="blogs">
-		<g:message code="project.blogs.label" default="Blogs" />
-		
+<div>
+	<label for="videourl">
+		<g:message code="project.videourl.label" default="Video Url" />
 	</label>
-	<g:select name="blogs" from="${TEC.Blog.list()}" multiple="multiple" optionKey="id" size="5" value="${projectInstance?.blogs*.id}" class="many-to-many"/>
+	<g:textField name="videourl" required="false" value="${projectInstance?.videourl}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: projectInstance, field: 'filledRoles', 'error')} ">
-	<label for="filledRoles">
-		<g:message code="project.filledRoles.label" default="Filled Roles" />
-		
+<div>
+	<label for="images">
+		<g:message code="project.images.label" default="Images" />
 	</label>
-	
-<ul class="one-to-many">
-<g:each in="${projectInstance?.filledRoles?}" var="f">
-    <li><g:link controller="role" action="show" id="${f.id}">${f?.encodeAsHTML()}</g:link></li>
-</g:each>
-<li class="add">
-<g:link controller="role" action="create" params="['project.id': projectInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'role.label', default: 'Role')])}</g:link>
-</li>
-</ul>
-
+	<g:textField name="images" required="false" value="${projectInstance?.images}"/>
 </div>
+
+<div>
+	<label for="credits">
+		<g:message code="project.credits.label" default="Credits" />
+	</label>
+	<g:textField name="credits" required="" value="${projectInstance?.credits}"/>
+</div>
+
+<div>
+	<label for="comments">
+		<g:message code="project.comments.label" default="Comments" />
+	</label>
+	<g:textField name="comments" required="" value="${projectInstance?.comments}"/>
+</div>  
 
