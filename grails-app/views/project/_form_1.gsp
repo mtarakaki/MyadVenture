@@ -48,14 +48,6 @@
 	<g:select name="blogs" from="${TEC.Blog.list()}" multiple="multiple" optionKey="id" size="5" value="${projectInstance?.blogs*.id}" class="many-to-many"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: projectInstance, field: 'dateOfIncorporation', 'error')} required">
-	<label for="dateOfIncorporation">
-		<g:message code="project.dateOfIncorporation.label" default="Date Of Incorporation" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:datePicker name="dateOfIncorporation" precision="day"  value="${projectInstance?.dateOfIncorporation}"  />
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: projectInstance, field: 'filledRoles', 'error')} ">
 	<label for="filledRoles">
 		<g:message code="project.filledRoles.label" default="Filled Roles" />

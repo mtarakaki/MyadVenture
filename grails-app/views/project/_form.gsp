@@ -18,22 +18,6 @@
 	<g:textField name="description" required="" value="${projectInstance?.description}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: projectInstance, field: 'logoUri', 'error')} ">
-	<label for="logoUri">
-		<g:message code="project.logoUri.label" default="Logo Uri" />
-		
-	</label>
-	<g:field type="url" name="logoUri" value="${projectInstance?.logoUri}"/>
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: projectInstance, field: 'dateOfIncorporation', 'error')} required">
-	<label for="dateOfIncorporation">
-		<g:message code="project.dateOfIncorporation.label" default="Date Of Incorporation" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:datePicker name="dateOfIncorporation" precision="day"  value="${projectInstance?.dateOfIncorporation}"  />
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: projectInstance, field: 'admin', 'error')} required">
 	<label for="admin">
 		<g:message code="project.admin.label" default="Admin" />

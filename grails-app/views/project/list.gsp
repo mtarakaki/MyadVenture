@@ -16,13 +16,7 @@
 			</g:if>
                         <center>
                           <table>
-				<thead>
-					<tr>
-						<g:sortableColumn property="name" title="${message(code: 'project.name.label', default: 'Name')}" />
-					
-						<!--- <g:sortableColumn property="dateOfIncorporation" title="${message(code: 'project.dateOfIncorporation.label', default: 'Date Of Incorporation')}" />  -->
-					</tr>
-				</thead>
+				
 				<tbody>
 				<g:each in="${projectInstanceList}" status="i" var="projectInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">

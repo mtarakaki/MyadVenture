@@ -32,9 +32,53 @@
 					
 				</li>
 				</g:if>
-			<!---
-				
-			-->
+                          
+                                <g:if test="${projectInstance?.ratings}">
+				<li class="fieldcontain">
+					<span id="description-label" class="property-label"><g:message code="project.ratings.label" default="Ratings" /></span>
+					
+						<span class="property-value" aria-labelledby="description-label"><g:fieldValue bean="${projectInstance}" field="ratings"/></span>
+					
+				</li>
+				</g:if>
+                          
+                                <g:if test="${projectInstance?.funding}">
+				<li class="fieldcontain">
+					<span id="description-label" class="property-label"><g:message code="project.description.label" default="Funding" /></span>
+					
+						<span class="property-value" aria-labelledby="description-label"><g:fieldValue bean="${projectInstance}" field="funding"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${projectInstance?.videourl}">
+				<li class="fieldcontain">
+					<span id="logoUri-label" class="property-label"><g:message code="project.videourl.label" default="Video URL" /></span>
+					
+						<span class="property-value" aria-labelledby="videourl-label"><g:fieldValue bean="${projectInstance}" field="videourl"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${projectInstance?.credits}">
+				<li class="fieldcontain">
+					<span id="credits-label" class="property-label"><g:message code="project.credits.label" default="Credits" /></span>
+					
+						<span class="property-value" aria-labelledby="credits-label"><g:fieldValue date="${projectInstance?.credits}" /></span>
+					
+				</li>
+				</g:if>
+                          
+                                <g:if test="${projectInstance?.comments}">
+				<li class="fieldcontain">
+					<span id="comments-label" class="property-label"><g:message code="project.comments.label" default="Comments" /></span>
+					
+						<span class="property-value" aria-labelledby="comments-label"><g:fieldValue date="${projectInstance?.comments}" /></span>
+					
+				</li>
+				</g:if>
+                          
+			
 				<g:if test="${projectInstance?.admin}">
 				<li class="fieldcontain">
 					<span id="admin-label" class="property-label"><g:message code="project.admin.label" default="Admin" /></span>
@@ -62,15 +106,6 @@
 						<g:each in="${projectInstance.blogs}" var="b">
 						<span class="property-value" aria-labelledby="blogs-label"><g:link controller="blog" action="show" id="${b.id}">${b?.encodeAsHTML()}</g:link></span>
 						</g:each>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${projectInstance?.dateCreated}">
-				<li class="fieldcontain">
-					<span id="dateCreated-label" class="property-label"><g:message code="project.dateCreated.label" default="Date Created" /></span>
-					
-						<span class="property-value" aria-labelledby="dateCreated-label"><g:formatDate date="${projectInstance?.dateCreated}" /></span>
 					
 				</li>
 				</g:if>

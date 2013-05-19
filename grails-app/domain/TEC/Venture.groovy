@@ -11,7 +11,7 @@ class Venture {
     static hasMany = [filledRoles:Role, availableRoles:Role, blogs:Blog]
 
     static constraints = {
-	name (blank:false, nullable:false)
+	name (blank:false, nullable:false, unique: true)
 	description (blank:false, nullable:false)
         logoUri (url:true,nullable:true)
         dateOfIncorporation()

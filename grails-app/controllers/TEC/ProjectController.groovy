@@ -14,7 +14,7 @@ class ProjectController {
         def profileInstance = Profile.get(session?.user?.id)
         if (!profileInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'profile.label', default: 'Profile')])
-            redirect(action: "page")
+            redirect(action: "allprojects")
             return
         }
         
@@ -23,6 +23,13 @@ class ProjectController {
             projections {
                 property('id')
                 property('name')
+                property('description')
+                property('ratings')
+                property('funding')
+                property('videourl')
+                property('images')
+                property('credits')
+                property('comments')
                 /*
                 property('ratings')
                 property('videourl')
@@ -49,6 +56,13 @@ class ProjectController {
             projections {
                 property('id')
                 property('name')
+                property('description')
+                property('ratings')
+                property('funding')
+                property('videourl')
+                property('images')
+                property('credits')
+                property('comments')
                 /*
                 property('ratings')
                 property('videourl')
@@ -75,9 +89,11 @@ class ProjectController {
         
         def projectInstance = new Project(params)
         projectInstance.admin = session?.user
-        
+            
         if (!projectInstance.save(flush: true)) {
-            redirect(action: "page")
+            println("IN HERE!")
+            println(params)
+            redirect(action: "list")
             return
         }
 
