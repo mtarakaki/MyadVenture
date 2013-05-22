@@ -96,8 +96,8 @@ $(document).ready(function() {
         <div class="ventureHeader">
         
           <span class="ventureIcon">
-                <g:if test="${profileInstance?.hasAvatar}">
-                  <img src="http://localhost:8081/uploads/${fieldValue(bean: profileInstance, field: 'handle')}.jpg" class="img-polaroid thumbnail" width="75px" height="75px"/>
+                <g:if test="${ventureInstance?.logoUri}">
+                  <img src="${ventureInstance?.logoUri}" class="img-polaroid thumbnail" width="75px" height="75px"/>
                 </g:if>
                 <g:else>
                   <img src="http://localhost:8081/uploads/no-pic-avatar.jpg" class="img-polaroid thumbnail" width="75px" height="75px"/>
