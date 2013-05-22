@@ -5910,3 +5910,44 @@ a.badge:hover {
 .affix {
   position: fixed;
 }
+
+.ventureIcon img{
+  display: inline;
+  height: 75px;
+}
+
+.ventureNameHeader {
+    margin-left: 10px;
+    font-size: 3.5em;
+    vertical-align: middle;
+}
+
+.ventureHeader{
+    height: 85px;
+    margin-bottom: 5px;
+}
+
+.ventureVideo {
+    padding: 8px 0 8px 0;
+    text-align: center;
+}
+
+.ventureDescription {
+    text-align: left;
+    padding: 0 0 8px 0;
+}
+
+.ventureAdditionalImage{
+    padding: 10px 0 10px 0;
+}
+
+.ventureAdditionalImage img{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.ventureImageDesc {
+    text-align: left;
+    margin-top: 8px;
+}
