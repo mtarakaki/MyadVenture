@@ -82,6 +82,15 @@ $(document).ready(function() {
       });
   </g:if>
   
+  /* 
+   * Source: http://stackoverflow.com/questions/3452546/javascript-regex-how-to-get-youtube-video-id-from-url
+  var video_id = window.location.search.split('v=')[1];
+  var ampersandPosition = video_id.indexOf('&');
+  if(ampersandPosition != -1) {
+    video_id = video_id.substring(0, ampersandPosition);
+  }
+  */
+  
   });
   </script> 
 </head>
@@ -166,7 +175,6 @@ $(document).ready(function() {
   
   
   
-  <!-- old form, for variable reference
   <div id="show-venture" class="content scaffold-show" role="main">
 			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">
@@ -174,33 +182,7 @@ $(document).ready(function() {
 			</g:if>
 			<ol class="property-list venture">
 			
-				<g:if test="${ventureInstance?.name}">
-				<li class="fieldcontain">
-					<span id="name-label" class="property-label"><g:message code="venture.name.label" default="Name" /></span>
-					
-						<span class="property-value" aria-labelledby="name-label"><g:fieldValue bean="${ventureInstance}" field="name"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${ventureInstance?.description}">
-				<li class="fieldcontain">
-					<span id="description-label" class="property-label"><g:message code="venture.description.label" default="Description" /></span>
-					
-						<span class="property-value" aria-labelledby="description-label"><g:fieldValue bean="${ventureInstance}" field="description"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${ventureInstance?.logoUri}">
-				<li class="fieldcontain">
-					<span id="logoUri-label" class="property-label"><g:message code="venture.logoUri.label" default="Logo Uri" /></span>
-					
-						<span class="property-value" aria-labelledby="logoUri-label"><g:fieldValue bean="${ventureInstance}" field="logoUri"/></span>
-					
-				</li>
-				</g:if>
-			
+
 				<g:if test="${ventureInstance?.dateOfIncorporation}">
 				<li class="fieldcontain">
 					<span id="dateOfIncorporation-label" class="property-label"><g:message code="venture.dateOfIncorporation.label" default="Date Of Incorporation" /></span>
@@ -265,7 +247,7 @@ $(document).ready(function() {
 			<g:form>
 				<fieldset class="buttons">
 					<g:hiddenField name="id" value="${ventureInstance?.id}" />
-                                        <!--- need to allow ventures to be able to add filled roles & unfilled rules
+                                        <!--- need to allow ventures to be able to add filled roles & unfilled rules -->
                                    //     <g:link controller="venture" action="createAvailableRoles" id="${ventureInstance?.id}">Add Available Role</g:link>
 					<g:link class="edit" action="edit" id="${ventureInstance?.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
@@ -273,7 +255,6 @@ $(document).ready(function() {
 			</g:form>
 		</div>
   
-                End reference  -->
   
   
 </body>
