@@ -1,4 +1,6 @@
 package TEC
+import TEC.Image
+import org.hibernate.criterion.CriteriaSpecification
 
 import org.springframework.dao.DataIntegrityViolationException
 
@@ -27,17 +29,6 @@ class ProjectController {
                 property('ratings')
                 property('funding')
                 property('videourl')
-                property('images')
-                property('credits')
-                property('comments')
-                /*
-                property('ratings')
-                property('videourl')
-                property('images')
-                property('credits')
-                property('comments')
-                property('funding')
-                */
             }
             order("name", "asc")
             eq("admin", profileInstance)
@@ -60,17 +51,6 @@ class ProjectController {
                 property('ratings')
                 property('funding')
                 property('videourl')
-                property('images')
-                property('credits')
-                property('comments')
-                /*
-                property('ratings')
-                property('videourl')
-                property('images')
-                property('credits')
-                property('comments')
-                property('funding')
-                */
             }
             order("name", "asc")
         }
@@ -137,6 +117,19 @@ class ProjectController {
         println roleList
         def roleCount = roleList.size()
         println roleCount
+        
+        //Images
+        def imgCriteria = Project.createCriteria()
+        def imgList = imgCriteria.list() {
+            createAlias('images', 'i')
+            projections {
+                groupProperty('i.id')
+                groupProperty('i.imageUri')
+                groupProperty('i.description')
+            }
+            eq("id", id)
+            order("i.id", "asc")
+        }
         
         session.projectInstance = projectInstance
 

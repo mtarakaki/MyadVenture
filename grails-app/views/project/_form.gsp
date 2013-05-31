@@ -1,4 +1,5 @@
-<%@ page import="TEC.Venture" %>
+<%@ page import="TEC.Project" %>
+<%@ page import="TEC.Image" %>
 
 
 
@@ -55,24 +56,29 @@
 	<g:textField name="videourl" required="false" value="${projectInstance?.videourl}"/>
 </div>
 
-<div>
-	<label for="images">
-		<g:message code="project.images.label" default="Images" />
-	</label>
-	<g:textField name="images" required="false" value="${projectInstance?.images}"/>
-</div>
-
-<div>
-	<label for="credits">
-		<g:message code="project.credits.label" default="Credits" />
-	</label>
-	<g:textField name="credits" required="" value="${projectInstance?.credits}"/>
-</div>
-
-<div>
-	<label for="comments">
-		<g:message code="project.comments.label" default="Comments" />
-	</label>
-	<g:textField name="comments" required="" value="${projectInstance?.comments}"/>
-</div>  
-
+  <g:set var="counter" value="${0}" />
+  
+<g:each in="${projectInstance?.images}">
+  <div>
+          <br/>
+          <label for="images">
+                  <g:message code="project.images.label" default="Image ${counter + 1}" />
+          </label>
+          <g:textField name="images[${counter}].imageUri" value="${projectInstance?.images.imageUri[counter]}" />
+          <br/>
+          <g:textArea name="images[${counter}].description" required="false" value="${projectInstance?.images.description[counter]}"/>
+          
+          <g:set var="counter" value="${counter + 1}" /><br/>
+          
+  </div>
+</g:each>
+  
+  <div>
+          <br/>
+          <label for="images">
+                  <g:message code="project.images.label" default="Image ${counter + 1}" />
+          </label>
+          <g:textField name="images[${counter}].imageUri" value="${projectInstance?.images.imageUri[counter]}" />
+          <br/>
+          <g:textArea name="images[${counter}].description" required="false" value="${projectInstance?.images.description[counter]}"/>
+  </div>

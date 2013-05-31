@@ -9,10 +9,10 @@ class Project {
     //Date dateOfIncorporation
     //Date dateCreated
     
+    String thumbUri
     String videourl
-    String images
-    String credits
-    String comments
+    List images
+    //String credits
     
     BigDecimal ratings
     BigDecimal funding
@@ -21,24 +21,16 @@ class Project {
     Float funding
     */
     
-    static hasMany = [filledRoles:Role, availableRoles:Role, blogs:Blog]
+    static hasMany = [filledRoles:Role, availableRoles:Role, blogs:Blog, images:Image]
 
     static constraints = {
 	name (blank:false, nullable:false)
 	description (blank:false, nullable:false)
-        ratings(scale: 1, min: 0.0, max: 4.0)
-        funding(scale: 2, min: 0.00, max: 100000.00)
-        //logoUri (url:true,nullable:true, blank:true)
-        //dateOfIncorporation()
-        
-        /*
-        funding(nullable:false)
-        ratings(nullable:false)
-        */
-        videourl()
-        images()
-        credits()
-        comments()
+        ratings(scale: 1, min: 0.0, max: 4.0, nullable:true)
+        funding(scale: 2, min: 0.00, max: 100000.00, nullable:true)
+        thumbUri (url:true,nullable:true, blank:true)
+        videourl(nullable:true)
+        images(nullable:true)
         
         
     }

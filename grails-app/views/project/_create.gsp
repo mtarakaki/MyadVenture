@@ -15,6 +15,7 @@
 	<g:textField name="description" required="" value="${projectInstance?.description}"/>
 </div>
 
+<!--
 <div class="fieldcontain ${hasErrors(bean: projectInstance, field: 'ratings', 'error')} required">
 	<label for="description">
 		<g:message code="project.description.label" default="Ratings" />
@@ -30,6 +31,7 @@
 	</label>
 	<g:textField name="funding" required="" value="${projectInstance?.funding}"/>
 </div>
+-->
 
 <div>
 	<label for="videourl">
@@ -38,23 +40,3 @@
 	<g:textField name="videourl" required="false" value="${projectInstance?.videourl}"/>
 </div>
 
-<div>
-	<label for="images">
-		<g:message code="project.images.label" default="Images" />
-	</label>
-	<g:textField name="images" required="false" value="${projectInstance?.images}"/>
-</div>
-
-<div>
-	<label for="credits">
-		<g:message code="project.credits.label" default="Credits" />
-	</label>
-	<g:textField name="credits" required="" value="${projectInstance?.credits}"/>
-</div>
-
-<div>
-	<label for="comments">
-		<g:message code="project.comments.label" default="Comments" />
-	</label>
-	<g:textField name="comments" required="" value="${projectInstance?.comments}"/>
-</div>

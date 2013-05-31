@@ -1,4 +1,5 @@
 <%@ page import="TEC.Project" %>
+<%@ page import="TEC.Image" %>
 
 <html>
   <head>
@@ -9,6 +10,23 @@
   <script type="text/javascript">   
 $(document).ready(function() {  
   <g:if test="${session?.user}">
+              
+      var src = "${projectInstance?.videourl}";
+      
+       /* 
+       * Source: http://stackoverflow.com/questions/3452546/javascript-regex-how-to-get-youtube-video-id-from-url
+       */
+      var video_id = src.split('v=')[1];
+      var ampersandPosition = video_id.indexOf('&');
+      if(ampersandPosition != -1) {
+        video_id = video_id.substring(0, ampersandPosition);
+      }
+  
+      src = "http://www.youtube.com/embed/" + video_id;
+      
+      
+      $("div.projectVideo iframe").attr("src",src);
+              
       $(".createproject").click( function () {
         $("#myModal .modal-header").html('<button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button><h3 id="myModalLabel">Create Project</h3>');
         $("#myModal .modal-body").load($(this).attr('href'));
@@ -82,15 +100,7 @@ $(document).ready(function() {
       });
   </g:if>
   
-  /* 
-   * Source: http://stackoverflow.com/questions/3452546/javascript-regex-how-to-get-youtube-video-id-from-url
-  var video_id = window.location.search.split('v=')[1];
-  var ampersandPosition = video_id.indexOf('&');
-  if(ampersandPosition != -1) {
-    video_id = video_id.substring(0, ampersandPosition);
-  }
-  */
-  
+
   });
   </script> 
 </head>
@@ -100,19 +110,11 @@ $(document).ready(function() {
     
     <g:if test="${!profileInstance?.suspended}">
       <!-- Right side -->
-      <div class="span11">
+      <div class="span9">
         
         <div class="projectHeader">
         
-          <span class="projectIcon">
-                <g:if test="${projectInstance?.logoUri}">
-                  <img src="${projectInstance?.logoUri}" class="img-polaroid thumbnail" width="75px" height="75px"/>
-                </g:if>
-                <g:else>
-                  <img src="http://localhost:8081/uploads/no-pic-avatar.jpg" class="img-polaroid thumbnail" width="75px" height="75px"/>
-                </g:else>
-          </span>
-
+          
           <span class="projectNameHeader">
               <g:if test="${projectInstance?.description}">
                 <g:fieldValue bean="${projectInstance}" field="name"/>
@@ -126,7 +128,7 @@ $(document).ready(function() {
             <text align="center">
             
             <div class="projectVideo">
-              <iframe width="816" height="459" src="http://www.youtube.com/embed/S2nBBMbjS8w" frameborder="0" allowfullscreen></iframe>
+              <iframe width="655" height="369" frameborder="0" allowfullscreen></iframe>
             </div>
             
             <div class="projectDescription">
@@ -139,7 +141,7 @@ $(document).ready(function() {
         </div>
       </div><!-- End span1 -->
     
-      <span class="span11">
+      <span class="span9">
       
         <div class='well'>
            <text align="center">
@@ -226,25 +228,16 @@ $(document).ready(function() {
 					
 				</li>
 				</g:if>
+                          
+                                <g:if test="${images}">
+				<li class="fieldcontain">
+					<span id="logoUri-label" class="property-label"><g:message code="project.images.label" default="Image" /></span>
+					
+						<span class="property-value" aria-labelledby="image-label"><g:fieldValue bean="${projectInstance}" field="image"/></span>
+					
+				</li>
+				</g:if>
 			
-				<g:if test="${projectInstance?.credits}">
-				<li class="fieldcontain">
-					<span id="credits-label" class="property-label"><g:message code="project.credits.label" default="Credits" /></span>
-					
-						<span class="property-value" aria-labelledby="credits-label"><g:fieldValue date="${projectInstance?.credits}" /></span>
-					
-				</li>
-				</g:if>
-                          
-                                <g:if test="${projectInstance?.comments}">
-				<li class="fieldcontain">
-					<span id="comments-label" class="property-label"><g:message code="project.comments.label" default="Comments" /></span>
-					
-						<span class="property-value" aria-labelledby="comments-label"><g:fieldValue date="${projectInstance?.comments}" /></span>
-					
-				</li>
-				</g:if>
-                          
 			
 				<g:if test="${projectInstance?.admin}">
 				<li class="fieldcontain">
