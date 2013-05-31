@@ -5946,17 +5946,17 @@ a.badge:hover {
     padding: 0 0 8px 0;
 }
 
-.ventureAdditionalImage{
+.projectAdditionalImage{
     padding: 10px 0 10px 0;
 }
 
-.ventureAdditionalImage img{
+.projectAdditionalImage img{
     margin-left: auto;
     margin-right: auto;
 }
 
 
-.ventureImageDesc {
+.projectImageDesc {
     text-align: left;
     margin-top: 8px;
 }

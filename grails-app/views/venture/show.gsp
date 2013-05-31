@@ -139,26 +139,7 @@ $(document).ready(function() {
         </div>
       </div><!-- End span1 -->
     
-      <span class="span11">
       
-        <div class='well'>
-           <text align="center">
-          <div class='ventureAdditionalImage'>
-            <img src="http://img829.imageshack.us/img829/20/cocacolam.jpg" class="img-polaroid thumbnail"/>
-            
-            <div class='ventureImageDesc'>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin risus odio, sollicitudin ut sollicitudin ut, aliquam a ante. 
-              Suspendisse potenti. Maecenas fringilla imperdiet mi id aliquam. Sed ipsum enim, adipiscing sit amet gravida sed, accumsan 
-              ac sapien. Donec diam magna, ultrices id sodales nec, tempor rutrum magna. Cras porta imperdiet adipiscing. Class aptent 
-              taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
-            </div>
-            
-          </div>
-          
-           </text>
-        </div>
-      
-      </span>
 
       
     </g:if>
