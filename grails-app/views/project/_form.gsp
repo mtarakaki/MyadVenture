@@ -19,14 +19,6 @@
 	<g:textField name="description" required="" value="${projectInstance?.description}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: projectInstance, field: 'ratings', 'error')} required">
-	<label for="description">
-		<g:message code="project.description.label" default="Ratings" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:textField name="ratings" required="" value="${projectInstance?.ratings}"/>
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: projectInstance, field: 'funding', 'error')} required">
 	<label for="funding">
 		<g:message code="project.description.label" default="Funding" />
@@ -80,5 +72,5 @@
           </label>
           <g:textField name="images[${counter}].imageUri" value="${projectInstance?.images.imageUri[counter]}" />
           <br/>
-          <g:textArea name="images[${counter}].description" required="false" value="${projectInstance?.images.description[counter]}"/>
+          <g:textArea name="images[${counter}].description"  value="${projectInstance?.images.description[counter]}"/>
   </div>

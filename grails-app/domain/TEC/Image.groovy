@@ -6,7 +6,7 @@ class Image {
     String description
 
     static constraints = {
-        imageUri (blank:false, nullable:false)
-	description (blank:true, nullable:true)
+        imageUri (nullable:true)
+	description (nullable:true)
     }
 }
