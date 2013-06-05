@@ -73,6 +73,12 @@ $(document).ready(function() {
         $("#myModal .modal-body").load("${createLink(controller: 'skillset', action: 'create', params:[type: 'Personal'])}");
         $('#myModal').modal('show');  
       });
+      
+      $("#update_role").die("click").live("click", function () {        
+        $("#myModal .modal-header").html('<button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button><h3 id="myModalLabel">New Role</h3>');
+        $("#myModal .modal-body").load("${createLink(controller: 'role', action: 'create', )}");
+        $('#myModal').modal('show');  
+      });
   
       $("#send_message").die("click").live("click", function () {
         $("#myModal .modal-header").html('<button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button><h3 id="myModalLabel">Send Message</h3>');
@@ -229,7 +235,8 @@ $(document).ready(function() {
 				<fieldset class="buttons">
 					<g:hiddenField name="id" value="${ventureInstance?.id}" />
                                         <!--- need to allow ventures to be able to add filled roles & unfilled rules -->
-                                   //     <g:link controller="venture" action="createAvailableRoles" id="${ventureInstance?.id}">Add Available Role</g:link>
+                                    <li><a href="#" id="update_role" name="update_role">Add Available Role</a></li>
+                                        <!-- <g:link controller="role" action="create" id="${ventureInstance?.id}">Add Available Role</g:link> -->
 					<g:link class="edit" action="edit" id="${ventureInstance?.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 				</fieldset>
