@@ -260,7 +260,7 @@ class ProfileController {
         //an ownerid that is equal to the current user's id.
         def roleCriteria = Venture.createCriteria()
         def roleList = roleCriteria.list{
-            filledRoles {
+            roles {
                 eq("owner.id",session?.user?.id)
             }
         }

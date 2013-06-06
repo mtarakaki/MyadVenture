@@ -57,29 +57,6 @@ class VentureController {
         [ventureInstance: new Venture(params)]
     }
     
-    def createAvailableRoles(){
-        //owner, name
-        println "Company id: "
-        println params.id
-        def ventureInstance = Venture.get(params.id)
-        //find out if the admin of the Venture is the current user
-        
-        def isadmin = false
-        if (session?.user?.id == ventureInstance.admin.id){
-            isadmin = true
-        }
-        
-        println "session id: "
-        println session?.user?.id
-        println "admin id: "
-        println ventureInstance.admin.id
-        
-        println "Available Roles: "
-        println isadmin
-        [availableRoles: new Role(params), admin: isadmin]
-        println params
-    }
-    
     def save() {
         def ventureInstance = new Venture(params)
         ventureInstance.admin = session?.user
@@ -112,23 +89,9 @@ class VentureController {
             order("lastUpdated", "desc")
         }
         def blogCount = blogList.getTotalCount()
-        
-        //find all the available roles in the Venture
-        //by looking through all the Ventures, finding availableRoles
-        def roleCriteria = Venture.createCriteria()
-        def roleList = roleCriteria.list{
-            availableRoles {
-            }
-        }
-        
-        println "Available Roles: "
-        println roleList
-        def roleCount = roleList.size()
-        println roleCount
-        
+                
         session.ventureInstance = ventureInstance
-
-
+        
         [blogs: blogList, blogCount: blogCount, ventureInstance: ventureInstance]
     } 
 

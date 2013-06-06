@@ -76,7 +76,7 @@ $(document).ready(function() {
       
       $("#update_role").die("click").live("click", function () {        
         $("#myModal .modal-header").html('<button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button><h3 id="myModalLabel">New Role</h3>');
-        $("#myModal .modal-body").load("${createLink(controller: 'role', action: 'create', )}");
+        $("#myModal .modal-body").load("${createLink(controller: 'role', action: 'create', params:[id: ventureInstance?.id])}");
         $('#myModal').modal('show');  
       });
   
@@ -188,13 +188,28 @@ $(document).ready(function() {
 				</li>
 				</g:if>
 			
-				<g:if test="${ventureInstance?.availableRoles}">
+				<g:if test="${ventureInstance?.roles}">
 				<li class="fieldcontain">
 					<span id="availableRoles-label" class="property-label"><g:message code="venture.availableRoles.label" default="Available Roles" /></span>
 					
-						<g:each in="${ventureInstance.availableRoles}" var="a">
-						<span class="property-value" aria-labelledby="availableRoles-label"><g:link controller="role" action="show" id="${a.id}">${a?.encodeAsHTML()}</g:link></span>
+						<g:each in="${ventureInstance.roles}" var="a">
+                                                  <g:if test="${a.filled == false}">
+                                                    <span class="property-value" aria-labelledby="availableRoles-label"><g:link controller="role" action="show" id="${a.id}">${a?.name}</g:link></span>
+                                                  </g:if>
 						</g:each>
+					
+				</li>
+				</g:if>
+                          
+                                <g:if test="${ventureInstance?.roles}">
+				<li class="fieldcontain">
+					<span id="filledRoles-label" class="property-label"><g:message code="venture.filledRoles.label" default="Filled Roles" /></span>
+					
+						<g:each in="${ventureInstance.roles}" var="f">
+                                                  <g:if test="${f.filled == true}">
+                                                    <span class="property-value" aria-labelledby="filledRoles-label"><g:link controller="role" action="show" id="${f.id}">${f?.name}</g:link></span>
+                                                  </g:if>
+                                                </g:each>
 					
 				</li>
 				</g:if>
@@ -219,24 +234,11 @@ $(document).ready(function() {
 				</li>
 				</g:if>
 			
-				<g:if test="${ventureInstance?.filledRoles}">
-				<li class="fieldcontain">
-					<span id="filledRoles-label" class="property-label"><g:message code="venture.filledRoles.label" default="Filled Roles" /></span>
-					
-						<g:each in="${ventureInstance.filledRoles}" var="f">
-						<span class="property-value" aria-labelledby="filledRoles-label"><g:link controller="role" action="show" id="${f.id}">${f?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
-				</g:if>
-			
 			</ol>
 			<g:form>
 				<fieldset class="buttons">
-					<g:hiddenField name="id" value="${ventureInstance?.id}" />
                                         <!--- need to allow ventures to be able to add filled roles & unfilled rules -->
-                                    <li><a href="#" id="update_role" name="update_role">Add Available Role</a></li>
-                                        <!-- <g:link controller="role" action="create" id="${ventureInstance?.id}">Add Available Role</g:link> -->
+                                        <a href="#" id="update_role" name="update_role">Add Available Role</a>
 					<g:link class="edit" action="edit" id="${ventureInstance?.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 				</fieldset>

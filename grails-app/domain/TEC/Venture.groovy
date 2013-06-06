@@ -8,8 +8,12 @@ class Venture {
     Date dateOfIncorporation
     Date dateCreated
 
-    static hasMany = [filledRoles:Role, availableRoles:Role, blogs:Blog]
+    static hasMany = [roles:Role, blogs:Blog]
 
+    String toString(){
+        return (this.name)
+    }
+    
     static constraints = {
 	name (blank:false, nullable:false, unique: true)
 	description (blank:false, nullable:false)
@@ -18,8 +22,7 @@ class Venture {
     }
 
     static mapping = {
-
-availableRoles cascade: "all-delete-orphan"
+        roles cascade: "all-delete-orphan"
         blogs cascade: "all-delete-orphan"
     }
 }

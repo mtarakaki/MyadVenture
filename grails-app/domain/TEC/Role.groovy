@@ -7,6 +7,7 @@ package TEC
 class Role {
     Profile owner
     String name
+    boolean filled
     
     static hasMany = [specializations:Specialization,skillsets:Skillset]
     static belongsTo = [ventures:Venture]
