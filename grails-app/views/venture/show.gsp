@@ -79,6 +79,11 @@ $(document).ready(function() {
         $("#myModal .modal-body").load("${createLink(controller: 'role', action: 'create', params:[id: ventureInstance?.id])}");
         $('#myModal').modal('show');  
       });
+      $("#fill_role").die("click").live("click", function () {        
+        $("#myModal .modal-header").html('<button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button><h3 id="myModalLabel">New Role</h3>');
+        $("#myModal .modal-body").load("${createLink(controller: 'role', action: 'fillrole', params:[id: ventureInstance?.id])}");
+        $('#myModal').modal('show');  
+      });
   
       $("#send_message").die("click").live("click", function () {
         $("#myModal .modal-header").html('<button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button><h3 id="myModalLabel">Send Message</h3>');
@@ -241,6 +246,12 @@ $(document).ready(function() {
                                         <a href="#" id="update_role" name="update_role">Add Available Role</a>
 					<g:link class="edit" action="edit" id="${ventureInstance?.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+				</fieldset>
+			</g:form>
+                        <g:form>
+				<fieldset class="buttons">
+                                        <!--- need to allow ventures to be able to add filled roles & unfilled rules -->
+                                        <a href="#" id="fill_role" name="fill_role">Fill Role</a>
 				</fieldset>
 			</g:form>
 		</div>
