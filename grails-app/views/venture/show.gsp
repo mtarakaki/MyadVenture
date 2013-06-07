@@ -248,12 +248,7 @@ $(document).ready(function() {
 					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 				</fieldset>
 			</g:form>
-                        <g:form>
-				<fieldset class="buttons">
-                                        <!--- need to allow ventures to be able to add filled roles & unfilled rules -->
-                                        <a href="#" id="fill_role" name="fill_role">Fill Role</a>
-				</fieldset>
-			</g:form>
+                        
 		</div>
   
   

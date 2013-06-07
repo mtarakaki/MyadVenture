@@ -9,6 +9,10 @@ class Role {
     String name
     boolean filled
     
+    String toString(){
+            return (this.name)
+        }
+    
     static hasMany = [specializations:Specialization,skillsets:Skillset]
     static belongsTo = [ventures:Venture]
     static constraints = {
